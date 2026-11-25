@@ -69,9 +69,22 @@ Open the URL printed in the terminal (default: `http://localhost:8501`).
 
 ---
 
-## 2. Cloud Deployment Options (Free / Academic Demos)
+## 2. Cloud Deployment Options (Vercel + Render / Free Demos)
 
-### Option A: Streamlit Community Cloud
+### Option A: Vercel (Frontend) + Render (FastAPI Backend) — Recommended Split
+1. **Backend on Render (`backend/` + `render.yaml`):**
+   - Connect your GitHub repository as a **Web Service** (or Blueprint reading `render.yaml`).
+   - Build Command: `pip install --upgrade pip && pip install -r backend/requirements-render.txt` (uses CPU-only PyTorch wheels + `opencv-python-headless` to fit cleanly inside cloud containers).
+   - Start Command: `uvicorn backend.main:app --host 0.0.0.0 --port $PORT --workers 1`
+   - Health Check Path: `/api/health`
+   - Environment Variables: `PYTHON_VERSION=3.11.11`, `YOLO_CONFIG_DIR=/tmp/ultralytics`, `FIREGUARD_TORCH_THREADS=2`, `ALLOWED_ORIGINS=https://your-vercel-app.vercel.app`.
+   - **Memory note:** YOLO11n CPU inference uses ~371 MB RSS on single images; keep `--workers 1` and short MP4 clips on Render Free (`512 MB RAM`), or select Render Starter for longer HD video uploads.
+2. **Frontend on Vercel (`frontend/`):**
+   - Import the same GitHub repository in Vercel, set **Root Directory** to `frontend`, and Framework Preset to **Vite**.
+   - Add Environment Variable `VITE_API_URL=https://<your-render-service>.onrender.com` (no trailing slash).
+   - `frontend/vercel.json` handles SPA routing rewrites automatically.
+
+### Option B: Streamlit Community Cloud
 1. Push your source code (without `dataset/` images, `runs/`, `uploads/`, `outputs/`, `reports/`, or `database/*.db`) to GitHub. Keep `.gitignore` intact.
 2. Add a `packages.txt` at the repo root containing Linux system libraries required by OpenCV & video codecs:
    ```text

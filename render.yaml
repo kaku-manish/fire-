@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: fireguard-ai-backend
+    runtime: python
+    plan: free
+    region: oregon
+    buildCommand: pip install --upgrade pip && pip install -r backend/requirements-render.txt
+    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT --workers 1
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.11
+      - key: YOLO_CONFIG_DIR
+        value: /tmp/ultralytics
+      - key: FIREGUARD_TORCH_THREADS
+        value: "2"
+      - key: ALLOWED_ORIGINS
+        value: "*"

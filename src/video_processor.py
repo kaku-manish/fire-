@@ -81,6 +81,8 @@ class VideoAnalysisResult:
     growth_analysis: GrowthAnalysisResult
     raw_detections_total: int
     suppressed_detections_total: int
+    peak_fire_confidence: float = 0.0
+    peak_smoke_confidence: float = 0.0
     alert_timeline: list[AlertEvent] = field(default_factory=list)
     highest_alert_event: AlertEvent | None = None
     timeline_events: list[VideoTimelineEvent] = field(default_factory=list)
@@ -246,6 +248,8 @@ def process_video_file(
 
     last_confirmed_detections: list[Detection] = []
     all_confidences: list[float] = []
+    all_fire_confidences: list[float] = []
+    all_smoke_confidences: list[float] = []
     any_fire_seen = False
     any_smoke_seen = False
 
@@ -275,6 +279,8 @@ def process_video_file(
                 fire_confs = [d.confidence for d in last_confirmed_detections if d.class_name == "fire"]
                 smoke_confs = [d.confidence for d in last_confirmed_detections if d.class_name == "smoke"]
                 all_confidences.extend(d.confidence for d in last_confirmed_detections)
+                all_fire_confidences.extend(fire_confs)
+                all_smoke_confidences.extend(smoke_confs)
 
                 if fire_confs:
                     any_fire_seen = True
@@ -450,6 +456,8 @@ def process_video_file(
         growth_analysis=growth_result,
         raw_detections_total=temporal_filter.total_raw_detections,
         suppressed_detections_total=temporal_filter.total_suppressed_detections,
+        peak_fire_confidence=round(max(all_fire_confidences, default=0.0), 4),
+        peak_smoke_confidence=round(max(all_smoke_confidences, default=0.0), 4),
         alert_timeline=alert_timeline,
         highest_alert_event=highest_alert,
         timeline_events=timeline_events,

@@ -16,15 +16,19 @@ PyYAML>=6.0.1
 matplotlib>=3.8.0
 seaborn>=0.13.0
 
-# Dashboard & Interactive Visualization
+# Dashboard, Web API & Interactive Visualization
 streamlit>=1.40.0
 plotly>=5.20.0
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+python-multipart>=0.0.9
 
 # Automated PDF Report Generation
 reportlab>=4.1.0
 
 # HTTP Downloads & Progress Utilities
 requests>=2.31.0
+httpx>=0.27.0
 tqdm>=4.66.0
 
 # Automated Software Testing

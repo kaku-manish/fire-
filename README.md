@@ -1,17 +1,39 @@
 # FireGuard AI — AI-Based Fire and Smoke Detection
 
-A clean, software-only academic deep learning prototype built with **Python**, **Ultralytics YOLO11n**, **OpenCV**, **SQLite**, and **Streamlit** to detect **fire** and **smoke** from uploaded images and videos.
+A clean, software-only academic deep learning prototype built with **Python**, **Ultralytics YOLO11n**, **OpenCV**, **FastAPI**, **React + Vite**, **SQLite**, and **Streamlit** to detect **fire** and **smoke** from uploaded images and videos.
 
 > **Academic Prototype Disclaimer:** FireGuard AI is an educational research prototype. It is **not** a certified fire safety system and does not connect to physical cameras, sensors, or emergency services.
 
 ---
 
-## Simple 4-Page Interface
+## Cloud & Local Architecture
 
-1. **Home** — Project overview, Fire Detection / Smoke Detection / Software-Only highlights, and **Start Detection** button.
-2. **Live Audit** — Upload a `JPG`, `JPEG`, `PNG`, or `MP4` file, click **Analyze Fire & Smoke**, view original vs. AI-annotated media side by side (red boxes for fire, orange boxes for smoke), inspect circular fire & smoke coverage indicators, confidence %, visual severity (`No detection`, `Low <5%`, `Medium 5–20%`, `High >=20%`), and auto-save to SQLite.
-3. **Detection History** — Simple table of saved detections (`Date and time`, `Uploaded file name`, `Fire coverage (%)`, `Smoke coverage (%)`, `Visual severity`, `Detection result`) with a confirmed **Clear History** button.
-4. **About Project** — Beginner-friendly explanation of the problem, D-Fire dataset, YOLO11n model, architecture flow, and prototype limitations.
+- **`frontend/` (Vercel — React + Vite):** Dark-themed 4-page SPA (**Home**, **Live Audit**, **Detection History**, **About Project**) configured with `vercel.json` SPA rewrites and `VITE_API_URL`.
+- **`backend/` (Render — FastAPI + Uvicorn):** REST API (`GET /api/health`, `POST /api/analyze`, `GET/DELETE /api/history`, `GET /api/about`) powered by [`src/`](src/) and `models/best.pt`, configured cleanly with [`render.yaml`](render.yaml) and [`backend/requirements-render.txt`](backend/requirements-render.txt).
+- **`app.py` + `app_pages/` (Local Streamlit):** Preserved for direct single-command local academic demos (`streamlit run app.py`).
+
+---
+
+## Deploying to Render (Backend) + Vercel (Frontend)
+
+### 1. Deploy Backend on Render
+1. Push this repository to GitHub.
+2. In **Render**, create a new **Web Service** connected to your repo (or use **New Blueprint** to auto-read `render.yaml`).
+3. Confirm settings:
+   - **Build Command:** `pip install --upgrade pip && pip install -r backend/requirements-render.txt`
+   - **Start Command:** `uvicorn backend.main:app --host 0.0.0.0 --port $PORT --workers 1`
+   - **Health Check Path:** `/api/health`
+   - **Environment Variables:** `PYTHON_VERSION=3.11.11`, `YOLO_CONFIG_DIR=/tmp/ultralytics`, `ALLOWED_ORIGINS=*` (set to your Vercel URL after Step 2).
+4. Copy your Render URL (e.g. `https://fireguard-ai-backend.onrender.com`).
+
+### 2. Deploy Frontend on Vercel
+1. In **Vercel**, import the same GitHub repository.
+2. Set **Root Directory** to `frontend` and Framework Preset to **Vite**.
+3. Add Environment Variable:
+   - `VITE_API_URL` = `https://fireguard-ai-backend.onrender.com` *(no trailing slash)*
+4. Click **Deploy**.
+
+> **Render Memory Note:** PyTorch + YOLO11n inference measures ~371 MB RSS on single images; Render's Free tier (`512 MB RAM`) works best with images and short clips (`--workers 1`), while Render Starter (`2 GB RAM`) is recommended for larger MP4 videos. Also note Render Free spins down after inactivity (~30–50s cold start).
 
 ---
 
