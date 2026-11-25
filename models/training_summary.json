@@ -1,0 +1,33 @@
+{
+  "base_model": "yolo11n.pt",
+  "device": "cpu",
+  "epochs_configured": 16,
+  "imgsz": 512,
+  "batch": 8,
+  "optimizer": "auto",
+  "patience": 8,
+  "seed": 42,
+  "dataset_info": {
+    "train_images": 480,
+    "valid_images": 100,
+    "names": {
+      "0": "smoke",
+      "1": "fire"
+    }
+  },
+  "run_dir": "C:\\Users\\kakum\\Desktop\\fire\\runs\\detect\\fireguard_yolo11n_v2",
+  "best_checkpoint": "C:\\Users\\kakum\\Desktop\\fire\\runs\\detect\\fireguard_yolo11n_v2\\weights\\best.pt",
+  "installed_model_path": null,
+  "results_csv": "C:\\Users\\kakum\\Desktop\\fire\\runs\\detect\\fireguard_yolo11n_v2\\results.csv",
+  "confusion_matrix_path": "C:\\Users\\kakum\\Desktop\\fire\\runs\\detect\\fireguard_yolo11n_v2\\confusion_matrix.png",
+  "training_curves_path": "C:\\Users\\kakum\\Desktop\\fire\\models\\fireguard_yolo11n_v2_curves.png",
+  "onnx_export_path": null,
+  "validation_metrics": {
+    "best_epoch": 16,
+    "precision": 0.6583,
+    "recall": 0.5225,
+    "f1_score": 0.5826,
+    "map50": 0.589,
+    "map50_95": 0.3096
+  }
+}

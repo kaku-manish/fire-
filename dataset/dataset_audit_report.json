@@ -1,0 +1,231 @@
+{
+  "licensing": {
+    "D-Fire": {
+      "source": "https://github.com/gaia-solutions-on-demand/DFireDataset",
+      "license": "CC0 1.0 / Open Academic Dataset (verify upstream LICENSE before redistribution)",
+      "citation": "de Venancio, P. V. A. B., Lisboa, A. C., & Barbosa, A. V. (2022). An automatic fire detection system based on deep convolutional neural networks for low-power, resource-constrained devices. Neural Computing and Applications."
+    },
+    "FIgLib": {
+      "source": "https://www.hpwren.ucsd.edu/FIgLib/",
+      "license": "HPWREN Data Use Policy (as-is, explicit HPWREN/UCSD attribution required)",
+      "citation": "Dewangan, A., Pande, Y., Braun, H.-W., et al. (2022). FIgLib & SmokeyNet: Dataset and Deep Learning Model for Real-Time Wildland Fire Smoke Detection. Remote Sensing, 14(4), 1007."
+    }
+  },
+  "audit_summary": {
+    "source_dir": "C:\\Users\\kakum\\Desktop\\fire\\dataset",
+    "total_discovered_images": 682,
+    "valid_clean_images": 679,
+    "corrupted_images": 0,
+    "missing_labels": 2,
+    "exact_duplicates_removed": 0,
+    "near_duplicates_detected": 35,
+    "class_instance_counts": {
+      "fire": 742,
+      "smoke": 381
+    },
+    "image_category_counts": {
+      "normal_negative": 170,
+      "fire_only": 170,
+      "fire_and_smoke": 169,
+      "smoke_only": 170
+    },
+    "issues": [
+      {
+        "file_path": "C:\\Users\\kakum\\Desktop\\fire\\dataset\\dataset_summary_charts.png",
+        "issue_type": "missing_label",
+        "details": "No matching .txt file"
+      },
+      {
+        "file_path": "C:\\Users\\kakum\\Desktop\\fire\\dataset\\raw\\DFireDataset_repo\\figures\\dfire_examples.png",
+        "issue_type": "missing_label",
+        "details": "No matching .txt file"
+      },
+      {
+        "file_path": "C:\\Users\\kakum\\Desktop\\fire\\dataset\\test\\images\\AoF07896.jpg",
+        "issue_type": "near_duplicate",
+        "details": "Perceptual dHash matches AoF07878.jpg"
+      },
+      {
+        "file_path": "C:\\Users\\kakum\\Desktop\\fire\\dataset\\test\\images\\AoF07905.jpg",
+        "issue_type": "near_duplicate",
+        "details": "Perceptual dHash matches AoF07878.jpg"
+      },
+      {
+        "file_path": "C:\\Users\\kakum\\Desktop\\fire\\dataset\\train\\images\\AoF03147.jpg",
+        "issue_type": "near_duplicate",
+        "details": "Perceptual dHash matches AoF03146.jpg"
+      },
+      {
+        "file_path": "C:\\Users\\kakum\\Desktop\\fire\\dataset\\train\\images\\AoF04538.jpg",
+        "issue_type": "near_duplicate",
+        "details": "Perceptual dHash matches AoF04508.jpg"
+      },
+      {
+        "file_path": "C:\\Users\\kakum\\Desktop\\fire\\dataset\\train\\images\\AoF04627.jpg",
+        "issue_type": "near_duplicate",
+        "details": "Perceptual dHash matches AoF07890.jpg"
+      },
+      {
+        "file_path": "C:\\Users\\kakum\\Desktop\\fire\\dataset\\train\\images\\AoF04639.jpg",
+        "issue_type": "near_duplicate",
+        "details": "Perceptual dHash matches AoF07878.jpg"
+      },
+      {
+        "file_path": "C:\\Users\\kakum\\Desktop\\fire\\dataset\\train\\images\\AoF04648.jpg",
+        "issue_type": "near_duplicate",
+        "details": "Perceptual dHash matches AoF07890.jpg"
+      },
+      {
+        "file_path": "C:\\Users\\kakum\\Desktop\\fire\\dataset\\train\\images\\AoF04661.jpg",
+        "issue_type": "near_duplicate",
+        "details": "Perceptual dHash matches AoF07878.jpg"
+      },
+      {
+        "file_path": "C:\\Users\\kakum\\Desktop\\fire\\dataset\\train\\images\\AoF04665.jpg",
+        "issue_type": "near_duplicate",
+        "details": "Perceptual dHash matches AoF07889.jpg"
+      },
+      {
+        "file_path": "C:\\Users\\kakum\\Desktop\\fire\\dataset\\train\\images\\AoF04666.jpg",
+        "issue_type": "near_duplicate",
+        "details": "Perceptual dHash matches AoF07889.jpg"
+      },
+      {
+        "file_path": "C:\\Users\\kakum\\Desktop\\fire\\dataset\\train\\images\\AoF04683.jpg",
+        "issue_type": "near_duplicate",
+        "details": "Perceptual dHash matches AoF07889.jpg"
+      },
+      {
+        "file_path": "C:\\Users\\kakum\\Desktop\\fire\\dataset\\train\\images\\AoF04689.jpg",
+        "issue_type": "near_duplicate",
+        "details": "Perceptual dHash matches AoF07890.jpg"
+      },
+      {
+        "file_path": "C:\\Users\\kakum\\Desktop\\fire\\dataset\\train\\images\\AoF04691.jpg",
+        "issue_type": "near_duplicate",
+        "details": "Perceptual dHash matches AoF07890.jpg"
+      },
+      {
+        "file_path": "C:\\Users\\kakum\\Desktop\\fire\\dataset\\train\\images\\AoF04692.jpg",
+        "issue_type": "near_duplicate",
+        "details": "Perceptual dHash matches AoF07878.jpg"
+      },
+      {
+        "file_path": "C:\\Users\\kakum\\Desktop\\fire\\dataset\\train\\images\\AoF04705.jpg",
+        "issue_type": "near_duplicate",
+        "details": "Perceptual dHash matches AoF07890.jpg"
+      },
+      {
+        "file_path": "C:\\Users\\kakum\\Desktop\\fire\\dataset\\train\\images\\AoF04712.jpg",
+        "issue_type": "near_duplicate",
+        "details": "Perceptual dHash matches AoF07913.jpg"
+      },
+      {
+        "file_path": "C:\\Users\\kakum\\Desktop\\fire\\dataset\\train\\images\\AoF04716.jpg",
+        "issue_type": "near_duplicate",
+        "details": "Perceptual dHash matches AoF07889.jpg"
+      },
+      {
+        "file_path": "C:\\Users\\kakum\\Desktop\\fire\\dataset\\train\\images\\AoF04753.jpg",
+        "issue_type": "near_duplicate",
+        "details": "Perceptual dHash matches AoF07890.jpg"
+      },
+      {
+        "file_path": "C:\\Users\\kakum\\Desktop\\fire\\dataset\\train\\images\\AoF04759.jpg",
+        "issue_type": "near_duplicate",
+        "details": "Perceptual dHash matches AoF07889.jpg"
+      },
+      {
+        "file_path": "C:\\Users\\kakum\\Desktop\\fire\\dataset\\train\\images\\AoF04763.jpg",
+        "issue_type": "near_duplicate",
+        "details": "Perceptual dHash matches AoF07890.jpg"
+      },
+      {
+        "file_path": "C:\\Users\\kakum\\Desktop\\fire\\dataset\\train\\images\\AoF04774.jpg",
+        "issue_type": "near_duplicate",
+        "details": "Perceptual dHash matches AoF07878.jpg"
+      },
+      {
+        "file_path": "C:\\Users\\kakum\\Desktop\\fire\\dataset\\train\\images\\AoF04780.jpg",
+        "issue_type": "near_duplicate",
+        "details": "Perceptual dHash matches AoF07889.jpg"
+      },
+      {
+        "file_path": "C:\\Users\\kakum\\Desktop\\fire\\dataset\\train\\images\\AoF04797.jpg",
+        "issue_type": "near_duplicate",
+        "details": "Perceptual dHash matches AoF07889.jpg"
+      },
+      {
+        "file_path": "C:\\Users\\kakum\\Desktop\\fire\\dataset\\train\\images\\AoF04820.jpg",
+        "issue_type": "near_duplicate",
+        "details": "Perceptual dHash matches AoF07890.jpg"
+      },
+      {
+        "file_path": "C:\\Users\\kakum\\Desktop\\fire\\dataset\\train\\images\\AoF04922.jpg",
+        "issue_type": "near_duplicate",
+        "details": "Perceptual dHash matches AoF07935.jpg"
+      },
+      {
+        "file_path": "C:\\Users\\kakum\\Desktop\\fire\\dataset\\train\\images\\AoF04924.jpg",
+        "issue_type": "near_duplicate",
+        "details": "Perceptual dHash matches AoF07935.jpg"
+      },
+      {
+        "file_path": "C:\\Users\\kakum\\Desktop\\fire\\dataset\\train\\images\\AoF06135.jpg",
+        "issue_type": "near_duplicate",
+        "details": "Perceptual dHash matches AoF08239.jpg"
+      },
+      {
+        "file_path": "C:\\Users\\kakum\\Desktop\\fire\\dataset\\train\\labels\\WEB05882.txt",
+        "issue_type": "invalid_label",
+        "details": "Line 7: width/height (0.0000, 0.0000) must be in (0, 1]"
+      },
+      {
+        "file_path": "C:\\Users\\kakum\\Desktop\\fire\\dataset\\valid\\images\\AoF00231.jpg",
+        "issue_type": "near_duplicate",
+        "details": "Perceptual dHash matches AoF00149.jpg"
+      },
+      {
+        "file_path": "C:\\Users\\kakum\\Desktop\\fire\\dataset\\valid\\images\\AoF04355.jpg",
+        "issue_type": "near_duplicate",
+        "details": "Perceptual dHash matches AoF04354.jpg"
+      },
+      {
+        "file_path": "C:\\Users\\kakum\\Desktop\\fire\\dataset\\valid\\images\\AoF04631.jpg",
+        "issue_type": "near_duplicate",
+        "details": "Perceptual dHash matches AoF07878.jpg"
+      },
+      {
+        "file_path": "C:\\Users\\kakum\\Desktop\\fire\\dataset\\valid\\images\\AoF04731.jpg",
+        "issue_type": "near_duplicate",
+        "details": "Perceptual dHash matches AoF07890.jpg"
+      },
+      {
+        "file_path": "C:\\Users\\kakum\\Desktop\\fire\\dataset\\valid\\images\\AoF04761.jpg",
+        "issue_type": "near_duplicate",
+        "details": "Perceptual dHash matches AoF07890.jpg"
+      },
+      {
+        "file_path": "C:\\Users\\kakum\\Desktop\\fire\\dataset\\valid\\images\\AoF04773.jpg",
+        "issue_type": "near_duplicate",
+        "details": "Perceptual dHash matches AoF07878.jpg"
+      },
+      {
+        "file_path": "C:\\Users\\kakum\\Desktop\\fire\\dataset\\valid\\images\\AoF04801.jpg",
+        "issue_type": "near_duplicate",
+        "details": "Perceptual dHash matches AoF07890.jpg"
+      },
+      {
+        "file_path": "C:\\Users\\kakum\\Desktop\\fire\\dataset\\valid\\images\\AoF05432.jpg",
+        "issue_type": "near_duplicate",
+        "details": "Perceptual dHash matches AoF08063.jpg"
+      }
+    ]
+  },
+  "split_counts": {
+    "train": 480,
+    "valid": 100,
+    "test": 100
+  },
+  "figlib_sequences_indexed": 0
+}

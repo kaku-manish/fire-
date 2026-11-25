@@ -1,0 +1,77 @@
+# Python byte-compiled / caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+.Python
+build/
+develop-eggs/
+dist/
+eggs/
+.eggs/
+pip-wheel-metadata/
+share/python-wheels/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Testing & coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Environment variables & secrets
+.env
+.env.*
+*.pem
+*.key
+
+# Large datasets (preserve directory structure and data.yaml)
+dataset/raw/
+dataset/*.zip
+dataset/*.tar
+dataset/*.tar.gz
+dataset/train/images/*
+dataset/train/labels/*
+dataset/valid/images/*
+dataset/valid/labels/*
+dataset/test/images/*
+dataset/test/labels/*
+*.cache
+!dataset/**/.gitkeep
+!dataset/data.yaml
+
+# Trained model weights & YOLO training runs
+models/*.pt
+!models/best.pt
+models/*.onnx
+models/*.engine
+models/*.torchscript
+runs/
+yolo*.pt
+!models/.gitkeep
+
+# Runtime user uploads, outputs, generated reports, and SQLite databases
+uploads/*
+outputs/*
+reports/*
+database/*.db
+database/*.sqlite
+database/*.sqlite3
+!uploads/.gitkeep
+!outputs/.gitkeep
+!reports/.gitkeep
+!database/.gitkeep
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# IDE & OS artifacts
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

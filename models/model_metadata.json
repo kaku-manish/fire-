@@ -1,0 +1,15 @@
+{
+  "model_tier": "SUBSET_CPU_16EP",
+  "base_model": "yolo11n.pt",
+  "epochs": 16,
+  "imgsz": 512,
+  "device": "cpu",
+  "train_images": 480,
+  "valid_images": 100,
+  "test_images": 100,
+  "classes": {
+    "0": "smoke",
+    "1": "fire"
+  },
+  "note": "16-epoch YOLO11n trained on 480 balanced D-Fire images on CPU (test mAP@50=0.284 at 640 / 0.253 at 512 vs 0.0929 baseline). Train on all 21,527 D-Fire images in Google Colab via notebooks/model_training.ipynb for production accuracy."
+}

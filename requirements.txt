@@ -1,0 +1,31 @@
+# FireGuard AI — Mutually Compatible Dependencies
+# Tested for Python 3.10 - 3.13 (Windows, Linux, and Google Colab)
+
+# Deep Learning & Computer Vision
+torch>=2.2.0
+torchvision>=0.17.0
+ultralytics>=8.3.0,<9.0.0
+opencv-python>=4.9.0
+numpy>=1.26.0,<3.0.0
+pillow>=10.0.0
+
+# Data Analysis & Machine Learning Utilities
+pandas>=2.1.0
+scikit-learn>=1.4.0
+PyYAML>=6.0.1
+matplotlib>=3.8.0
+seaborn>=0.13.0
+
+# Dashboard & Interactive Visualization
+streamlit>=1.40.0
+plotly>=5.20.0
+
+# Automated PDF Report Generation
+reportlab>=4.1.0
+
+# HTTP Downloads & Progress Utilities
+requests>=2.31.0
+tqdm>=4.66.0
+
+# Automated Software Testing
+pytest>=8.0.0

@@ -1,0 +1,113 @@
+{
+  "primary_evaluation": {
+    "model_name": "best.pt",
+    "weights_path": "models\\best.pt",
+    "test_images_evaluated": 100,
+    "precision": 0.5446,
+    "recall": 0.4187,
+    "f1_score": 0.4734,
+    "map50": 0.2841,
+    "map50_95": 0.124,
+    "per_class": {
+      "smoke": {
+        "precision": 0.5946,
+        "recall": 0.4074,
+        "f1_score": 0.4835,
+        "map50": 0.2636,
+        "map50_95": 0.1074
+      },
+      "fire": {
+        "precision": 0.4946,
+        "recall": 0.4299,
+        "f1_score": 0.46,
+        "map50": 0.3047,
+        "map50_95": 0.1407
+      }
+    },
+    "avg_inference_ms": 42.07,
+    "fps": 23.77,
+    "false_alarm_evaluation": {
+      "negative_images": 25,
+      "positive_images": 75,
+      "baseline_false_positives": 6,
+      "enhanced_false_positives": 6,
+      "baseline_fpr": 0.24,
+      "enhanced_fpr": 0.24,
+      "baseline_image_recall": 0.7333,
+      "enhanced_image_recall": 0.7333,
+      "note": "Single-image filtering evaluates calibrated confidence and minimum bounding-box area; temporal persistence filtering adds multi-frame verification on video streams."
+    },
+    "confusion_matrix_path": "C:\\Users\\kakum\\Desktop\\fire\\runs\\detect\\val-5\\confusion_matrix.png",
+    "pr_curve_path": "C:\\Users\\kakum\\Desktop\\fire\\runs\\detect\\val-5\\BoxPR_curve.png",
+    "per_class_chart_path": "C:\\Users\\kakum\\Desktop\\fire\\outputs\\evaluation\\per_class_chart.png",
+    "confidence_dist_path": "C:\\Users\\kakum\\Desktop\\fire\\outputs\\evaluation\\confidence_distribution.png",
+    "success_gallery_path": "C:\\Users\\kakum\\Desktop\\fire\\outputs\\evaluation\\success_gallery.png",
+    "failure_gallery_path": "C:\\Users\\kakum\\Desktop\\fire\\outputs\\evaluation\\failure_gallery.png",
+    "video_smoke_delay": {
+      "video": "wildfire_dfire_author.mp4",
+      "smoke_onset_sec": 0.0,
+      "baseline_first_detection_sec": 38.0,
+      "filtered_first_detection_sec": 39.0,
+      "baseline_delay_sec": 38.0,
+      "filtered_delay_sec": 39.0,
+      "temporal_tradeoff_note": "Requiring 3 consecutive frames reduces transient false alarms while adding ~1.00s minimum verification delay."
+    }
+  },
+  "model_comparisons": [
+    {
+      "model_name": "best.pt",
+      "weights_path": "models\\best.pt",
+      "test_images_evaluated": 100,
+      "precision": 0.5446,
+      "recall": 0.4187,
+      "f1_score": 0.4734,
+      "map50": 0.2841,
+      "map50_95": 0.124,
+      "per_class": {
+        "smoke": {
+          "precision": 0.5946,
+          "recall": 0.4074,
+          "f1_score": 0.4835,
+          "map50": 0.2636,
+          "map50_95": 0.1074
+        },
+        "fire": {
+          "precision": 0.4946,
+          "recall": 0.4299,
+          "f1_score": 0.46,
+          "map50": 0.3047,
+          "map50_95": 0.1407
+        }
+      },
+      "avg_inference_ms": 42.07,
+      "fps": 23.77,
+      "false_alarm_evaluation": {
+        "negative_images": 25,
+        "positive_images": 75,
+        "baseline_false_positives": 6,
+        "enhanced_false_positives": 6,
+        "baseline_fpr": 0.24,
+        "enhanced_fpr": 0.24,
+        "baseline_image_recall": 0.7333,
+        "enhanced_image_recall": 0.7333,
+        "note": "Single-image filtering evaluates calibrated confidence and minimum bounding-box area; temporal persistence filtering adds multi-frame verification on video streams."
+      },
+      "confusion_matrix_path": "C:\\Users\\kakum\\Desktop\\fire\\runs\\detect\\val-5\\confusion_matrix.png",
+      "pr_curve_path": "C:\\Users\\kakum\\Desktop\\fire\\runs\\detect\\val-5\\BoxPR_curve.png",
+      "per_class_chart_path": "C:\\Users\\kakum\\Desktop\\fire\\outputs\\evaluation\\per_class_chart.png",
+      "confidence_dist_path": "C:\\Users\\kakum\\Desktop\\fire\\outputs\\evaluation\\confidence_distribution.png",
+      "success_gallery_path": "C:\\Users\\kakum\\Desktop\\fire\\outputs\\evaluation\\success_gallery.png",
+      "failure_gallery_path": "C:\\Users\\kakum\\Desktop\\fire\\outputs\\evaluation\\failure_gallery.png",
+      "video_smoke_delay": {
+        "video": "wildfire_dfire_author.mp4",
+        "smoke_onset_sec": 0.0,
+        "baseline_first_detection_sec": 38.0,
+        "filtered_first_detection_sec": 39.0,
+        "baseline_delay_sec": 38.0,
+        "filtered_delay_sec": 39.0,
+        "temporal_tradeoff_note": "Requiring 3 consecutive frames reduces transient false alarms while adding ~1.00s minimum verification delay."
+      }
+    }
+  ],
+  "comparison_chart_path": "C:\\Users\\kakum\\Desktop\\fire\\outputs\\model_comparison.png"
+}
