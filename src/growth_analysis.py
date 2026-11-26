@@ -14,17 +14,14 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Sequence
+from typing import TYPE_CHECKING, Sequence
 
-import matplotlib
-
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
 import numpy as np
-import pandas as pd
-import plotly.graph_objects as go
 
 import config
+
+if TYPE_CHECKING:
+    import plotly.graph_objects as go
 
 GROWTH_DISCLAIMER: str = (
     "Visual growth analysis measures changes in 2D bounding-box coverage across video "
@@ -73,14 +70,18 @@ class GrowthAnalysisResult:
 def smooth_series(values: Sequence[float], window: int = config.GROWTH_SMOOTHING_WINDOW) -> list[float]:
     """Apply centered rolling mean smoothing to suppress single-frame jitter."""
     arr = np.asarray(list(values), dtype=float)
-    if arr.size == 0:
+    n = int(arr.size)
+    if n == 0:
         return []
-    eff_window = max(1, min(int(window), arr.size))
+    eff_window = max(1, min(int(window), n))
     if eff_window == 1:
         return [round(float(v), 3) for v in arr]
-    series = pd.Series(arr)
-    smoothed = series.rolling(window=eff_window, min_periods=1, center=True).mean()
-    return [round(float(v), 3) for v in smoothed.tolist()]
+    left = eff_window // 2
+    right = (eff_window - 1) // 2
+    return [
+        round(float(np.mean(arr[max(0, i - left) : min(n, i + right + 1)])), 3)
+        for i in range(n)
+    ]
 
 
 def analyze_fire_growth(
@@ -201,6 +202,8 @@ def analyze_fire_growth(
 
 def create_growth_plotly_figure(growth: GrowthAnalysisResult, title: str = "Fire and smoke visual coverage over time") -> go.Figure:
     """Create an interactive dark-themed Plotly line chart of coverage vs time."""
+    import plotly.graph_objects as go
+
     fig = go.Figure()
     fig.add_trace(
         go.Scatter(
@@ -256,6 +259,11 @@ def create_growth_plotly_figure(growth: GrowthAnalysisResult, title: str = "Fire
 
 def export_growth_chart_png(growth: GrowthAnalysisResult, output_path: Path) -> Path:
     """Save a static Matplotlib PNG of the coverage progression chart for PDF reports."""
+    import matplotlib
+
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
     output_path.parent.mkdir(parents=True, exist_ok=True)
     fig, ax = plt.subplots(figsize=(9, 4.2))
     fig.patch.set_facecolor("#111418")

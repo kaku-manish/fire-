@@ -23,8 +23,19 @@ async function parseJsonResponse(resp) {
   }
 }
 
+async function safeFetch(url, options) {
+  try {
+    return await fetch(url, options);
+  } catch (err) {
+    if (err && err.name === "AbortError") throw err;
+    throw new Error(
+      "Could not reach the Render backend (it may be waking up from sleep or restarting — wait ~15–30 seconds and click Retry)."
+    );
+  }
+}
+
 export async function fetchHealth(refresh = false) {
-  const resp = await fetch(apiUrl(`/api/health${refresh ? "?refresh=true" : ""}`));
+  const resp = await safeFetch(apiUrl(`/api/health${refresh ? "?refresh=true" : ""}`));
   const data = await parseJsonResponse(resp);
   if (!resp.ok) {
     throw new Error(data.error_message || data.detail || `Health check failed (${resp.status})`);
@@ -35,7 +46,7 @@ export async function fetchHealth(refresh = false) {
 export async function analyzeMedia(file, signal) {
   const form = new FormData();
   form.append("file", file);
-  const resp = await fetch(apiUrl("/api/analyze"), {
+  const resp = await safeFetch(apiUrl("/api/analyze"), {
     method: "POST",
     body: form,
     signal,
@@ -48,7 +59,7 @@ export async function analyzeMedia(file, signal) {
 }
 
 export async function fetchHistory() {
-  const resp = await fetch(apiUrl("/api/history"));
+  const resp = await safeFetch(apiUrl("/api/history"));
   const data = await parseJsonResponse(resp);
   if (!resp.ok) {
     throw new Error(data.error_message || data.detail || `Failed to load history (${resp.status})`);
@@ -57,7 +68,7 @@ export async function fetchHistory() {
 }
 
 export async function clearHistory() {
-  const resp = await fetch(apiUrl("/api/history"), { method: "DELETE" });
+  const resp = await safeFetch(apiUrl("/api/history"), { method: "DELETE" });
   const data = await parseJsonResponse(resp);
   if (!resp.ok) {
     throw new Error(data.error_message || data.detail || `Failed to clear history (${resp.status})`);
@@ -66,7 +77,7 @@ export async function clearHistory() {
 }
 
 export async function fetchAbout() {
-  const resp = await fetch(apiUrl("/api/about"));
+  const resp = await safeFetch(apiUrl("/api/about"));
   const data = await parseJsonResponse(resp);
   if (!resp.ok) {
     throw new Error(data.error_message || data.detail || `Failed to load project metadata (${resp.status})`);

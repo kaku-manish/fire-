@@ -42,6 +42,8 @@ def test_backend_health_about_and_history_lifecycle(tmp_path: Path, monkeypatch)
         health_data = health_resp.json()
         assert health_data["model_ready"] is True
         assert set(health_data["class_names"].values()) == {"smoke", "fire"}
+        if (config.MODELS_DIR / "best.onnx").is_file():
+            assert "onnxruntime" in health_data["architecture"]
 
         about_resp = client.get("/api/about")
         assert about_resp.status_code == 200

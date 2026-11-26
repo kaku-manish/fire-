@@ -50,6 +50,7 @@ dataset/test/labels/*
 models/*.pt
 !models/best.pt
 models/*.onnx
+!models/best.onnx
 models/*.engine
 models/*.torchscript
 runs/

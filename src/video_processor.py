@@ -378,10 +378,13 @@ def process_video_file(
     growth_result = analyze_fire_growth(frame_metrics)
     growth_chart_path: Path | None = None
     if frame_metrics:
-        growth_chart_path = export_growth_chart_png(
-            growth_result,
-            out_dir / f"{stem}_{uid}_growth.png",
-        )
+        try:
+            growth_chart_path = export_growth_chart_png(
+                growth_result,
+                out_dir / f"{stem}_{uid}_growth.png",
+            )
+        except ImportError:
+            growth_chart_path = None
 
     # Re-evaluate peak / overall alert considering final growth trend
     if any_fire_seen or any_smoke_seen:
